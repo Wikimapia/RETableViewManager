@@ -24,6 +24,7 @@
 //
 
 #import "REPlaceholderTextView.h"
+#import "RECommonFunctions.h"
 
 @interface REPlaceholderTextView ()
 
@@ -78,7 +79,8 @@
 {
     if (self.placeholder.length > 0) {
         if (!self.placeholderLabel) {
-            self.placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 8, self.bounds.size.width - 16, 0)];
+            CGFloat padding = REUIKitIsFlatMode() ? 4 : 8;
+            self.placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(padding, 8, self.bounds.size.width - padding * 2, 0)];
             self.placeholderLabel.lineBreakMode = NSLineBreakByWordWrapping;
             self.placeholderLabel.numberOfLines = 0;
             self.placeholderLabel.font = self.font;
